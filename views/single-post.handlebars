@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">{{post.title}}</h2>
+            <p class="card-info">Posted by {{post.user.username}} on {{post.user.createdAt}}</p>
+        </div>
+        <div class="card-body">
+            <p>{{post.text}}</p>
+        </div>
+    </div>
+
+    <form>
+        <h4 class="form-label">Comment on this</h4>
+        <input class="form-input" id="comment-text">
+        {{#if logged_in}}
+        <button class="btn" type="submit">Submit</button>
+        {{#else}}
+        <button class="button" disabled>Please Log in to Comment</button>
+        {{/if}}
+    </form>
+
+    {{#each comments as comment}}
+    <div class="card">
+        <div class="card-header">
+            <h3>{{comment.user.username}}</h3>
+            <p>{{comment.user.createdAt}}</p>
+        </div>
+        <div class="card-body">
+            <p>{{comment.text}}</p>
+        </div>
+    </div>
+    {{/each}}
+
+</div>
+
+<script src="/js/comment.js"></script>
